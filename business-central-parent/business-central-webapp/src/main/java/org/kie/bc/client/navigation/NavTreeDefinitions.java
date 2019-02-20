@@ -22,7 +22,9 @@ import org.dashbuilder.navigation.impl.NavTreeBuilder;
 import org.kie.bc.client.resources.i18n.NavigationConstants;
 
 import static org.dashbuilder.navigation.workbench.NavWorkbenchCtx.perspective;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.*;
+import static org.kie.workbench.common.workbench.client.PerspectiveIds.LIBRARY;
+import static org.kie.workbench.common.workbench.client.PerspectiveIds.PROVISIONING;
+import static org.kie.workbench.common.workbench.client.PerspectiveIds.SERVER_MANAGEMENT;
 
 /**
  * Navigation tree definitions such as the workbench menu bar
@@ -34,32 +36,32 @@ public class NavTreeDefinitions {
 
     public static final String GROUP_DESIGN = "wb_group_design";
     public static final String ENTRY_PROJECTS = "wb_entry_projects";
-    public static final String ENTRY_PAGES = "wb_entry_pages";
+//    public static final String ENTRY_PAGES = "wb_entry_pages";
 
     public static final String GROUP_DEPLOY = "wb_group_deploy";
     public static final String ENTRY_PROVISIONING = "wb_entry_provisioning";
     public static final String ENTRY_EXECUTION_SERVERS = "wb_entry_execution_servers";
 
-    public static final String GROUP_MANAGE = "wb_group_manage";
-    public static final String ENTRY_PROCESS_DEFINITIONS = "wb_entry_process_definitions";
-    public static final String ENTRY_PROCESS_INSTANCES = "wb_entry_process_instances";
-    public static final String ENTRY_ADMINISTRATION_TASKS = "wb_entry_task_administration";
-    public static final String ENTRY_JOBS = "wb_entry_jobs";
-    public static final String ENTRY_EXECUTION_ERRORS = "wb_execution_errors";
+//    public static final String GROUP_MANAGE = "wb_group_manage";
+//    public static final String ENTRY_PROCESS_DEFINITIONS = "wb_entry_process_definitions";
+//    public static final String ENTRY_PROCESS_INSTANCES = "wb_entry_process_instances";
+//    public static final String ENTRY_ADMINISTRATION_TASKS = "wb_entry_task_administration";
+//    public static final String ENTRY_JOBS = "wb_entry_jobs";
+//    public static final String ENTRY_EXECUTION_ERRORS = "wb_execution_errors";
 
-    public static final String GROUP_TRACK = "wb_group_track";
-    public static final String ENTRY_TASKS_LIST = "wb_entry_tasks_list";
-    public static final String ENTRY_PROCESS_DASHBOARD = "wb_entry_process_dashboard";
-    public static final String ENTRY_TASK_DASHBOARD = "wb_entry_task_dashboard";
+//    public static final String GROUP_TRACK = "wb_group_track";
+//    public static final String ENTRY_TASKS_LIST = "wb_entry_tasks_list";
+//    public static final String ENTRY_PROCESS_DASHBOARD = "wb_entry_process_dashboard";
+//    public static final String ENTRY_TASK_DASHBOARD = "wb_entry_task_dashboard";
 
     private NavigationConstants i18n = NavigationConstants.INSTANCE;
 
     public NavTree buildDefaultNavTree() {
         return new NavTreeBuilder()
                 .group(GROUP_WORKBENCH,
-                        i18n.navTreeWorkbenchName(),
-                        i18n.navTreeWorkbenchDescr(),
-                        false)
+                       i18n.navTreeWorkbenchName(),
+                       i18n.navTreeWorkbenchDescr(),
+                       false)
                 .group(GROUP_DESIGN,
                        i18n.navTreeDesignName(),
                        i18n.navTreeDesignDescr(),
@@ -69,11 +71,11 @@ public class NavTreeDefinitions {
                       i18n.navTreeProjectsDescr(),
                       true,
                       perspective(LIBRARY))
-                .item(ENTRY_PAGES,
-                      i18n.navTreePageAuthoringName(),
-                      i18n.navTreePageAuthoringDescr(),
-                      false,
-                      perspective(CONTENT_MANAGEMENT))
+//                .item(ENTRY_PAGES,
+//                      i18n.navTreePageAuthoringName(),
+//                      i18n.navTreePageAuthoringDescr(),
+//                      false,
+//                      perspective(CONTENT_MANAGEMENT))
                 .endGroup()
                 .group(GROUP_DEPLOY,
                        i18n.navTreeDeployName(),
@@ -90,56 +92,56 @@ public class NavTreeDefinitions {
                       true,
                       perspective(SERVER_MANAGEMENT))
                 .endGroup()
-                .group(GROUP_MANAGE,
-                       i18n.navTreeManageName(),
-                       i18n.navTreeManageDescr(),
-                       true)
-                .item(ENTRY_PROCESS_DEFINITIONS,
-                      i18n.navTreeProcessDefinitionsName(),
-                      i18n.navTreeProcessDefinitionsDescr(),
-                      true,
-                      perspective(PROCESS_DEFINITIONS))
-                .item(ENTRY_PROCESS_INSTANCES,
-                      i18n.navTreeProcessInstancesName(),
-                      i18n.navTreeProcessInstancesDescr(),
-                      true,
-                      perspective(PROCESS_INSTANCES))
-                .item(ENTRY_ADMINISTRATION_TASKS,
-                      i18n.navTreeTasksName(),
-                      i18n.navTreeTasksDescr(),
-                      true,
-                      perspective(TASKS_ADMIN))
-                .item(ENTRY_JOBS,
-                      i18n.navTreeJobsName(),
-                      i18n.navTreeJobsDescr(),
-                      true,
-                      perspective(JOBS))
-                .item(ENTRY_EXECUTION_ERRORS,
-                      i18n.navTreeExecutionErrorsName(),
-                      i18n.navTreeExecutionErrorsDescr(),
-                      true,
-                      perspective(EXECUTION_ERRORS))
-                .endGroup()
-                .group(GROUP_TRACK,
-                       i18n.navTreeTrackName(),
-                       i18n.navTreeTrackDescr(),
-                       true)
-                .item(ENTRY_TASKS_LIST,
-                      i18n.navTreeTaskInboxName(),
-                      i18n.navTreeTaskInboxDescr(),
-                      true,
-                      perspective(TASKS))
-                .item(ENTRY_PROCESS_DASHBOARD,
-                      i18n.navTreeProcessReportName(),
-                      i18n.navTreeProcessReportDescr(),
-                      true,
-                      perspective(PROCESS_DASHBOARD))
-                .item(ENTRY_TASK_DASHBOARD,
-                      i18n.navTreeTaskReportName(),
-                      i18n.navTreeTaskReportDescr(),
-                      true,
-                      perspective(TASK_DASHBOARD))
-                .endGroup()
+//                .group(GROUP_MANAGE,
+//                       i18n.navTreeManageName(),
+//                       i18n.navTreeManageDescr(),
+//                       true)
+//                .item(ENTRY_PROCESS_DEFINITIONS,
+//                      i18n.navTreeProcessDefinitionsName(),
+//                      i18n.navTreeProcessDefinitionsDescr(),
+//                      true,
+//                      perspective(PROCESS_DEFINITIONS))
+//                .item(ENTRY_PROCESS_INSTANCES,
+//                      i18n.navTreeProcessInstancesName(),
+//                      i18n.navTreeProcessInstancesDescr(),
+//                      true,
+//                      perspective(PROCESS_INSTANCES))
+//                .item(ENTRY_ADMINISTRATION_TASKS,
+//                      i18n.navTreeTasksName(),
+//                      i18n.navTreeTasksDescr(),
+//                      true,
+//                      perspective(TASKS_ADMIN))
+//                .item(ENTRY_JOBS,
+//                      i18n.navTreeJobsName(),
+//                      i18n.navTreeJobsDescr(),
+//                      true,
+//                      perspective(JOBS))
+//                .item(ENTRY_EXECUTION_ERRORS,
+//                      i18n.navTreeExecutionErrorsName(),
+//                      i18n.navTreeExecutionErrorsDescr(),
+//                      true,
+//                      perspective(EXECUTION_ERRORS))
+//                .endGroup()
+//                .group(GROUP_TRACK,
+//                       i18n.navTreeTrackName(),
+//                       i18n.navTreeTrackDescr(),
+//                       true)
+//                .item(ENTRY_TASKS_LIST,
+//                      i18n.navTreeTaskInboxName(),
+//                      i18n.navTreeTaskInboxDescr(),
+//                      true,
+//                      perspective(TASKS))
+//                .item(ENTRY_PROCESS_DASHBOARD,
+//                      i18n.navTreeProcessReportName(),
+//                      i18n.navTreeProcessReportDescr(),
+//                      true,
+//                      perspective(PROCESS_DASHBOARD))
+//                .item(ENTRY_TASK_DASHBOARD,
+//                      i18n.navTreeTaskReportName(),
+//                      i18n.navTreeTaskReportDescr(),
+//                      true,
+//                      perspective(TASK_DASHBOARD))
+//                .endGroup()
                 .endGroup()
                 .build();
     }

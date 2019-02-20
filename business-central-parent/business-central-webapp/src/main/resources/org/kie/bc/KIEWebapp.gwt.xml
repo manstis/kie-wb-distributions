@@ -23,25 +23,25 @@
   <inherits name="org.uberfire.ext.plugin.RuntimePluginClient"/>
 
   <!-- Uberfire Extensions - Apps -->
-  <inherits name="org.uberfire.ext.apps.UberfireAppsClient"/>
+  <!--<inherits name="org.uberfire.ext.apps.UberfireAppsClient"/>-->
 
   <!-- designer -->
-  <inherits name="org.jbpm.designer.jBPMDesignerAPI"/>
-  <inherits name="org.jbpm.designer.jBPMDesignerClient"/>
+  <!--<inherits name="org.jbpm.designer.jBPMDesignerAPI"/>-->
+  <!--<inherits name="org.jbpm.designer.jBPMDesignerClient"/>-->
 
   <!-- jbpm-wb -->
-  <inherits name="org.jbpm.workbench.ht.JbpmWorkbenchHumanTasksClient"/>
-  <inherits name="org.jbpm.workbench.pr.JbpmWorkbenchProcessRuntimeClient"/>
-  <inherits name="org.jbpm.workbench.ks.JbpmWorkbenchKieServerAPI"/>
-  <inherits name="org.jbpm.workbench.es.JbpmWorkbenchExecutorServiceClient"/>
-  <inherits name="org.jbpm.workbench.common.JbpmWorkbenchCommonClient"/>
-  <inherits name="org.jbpm.workbench.wi.JbpmWorkbenchIntegrationClient"/>
-  <inherits name="org.jbpm.workbench.df.JbpmWorkbenchDataFiltersClient"/>
-  <inherits name="org.jbpm.workbench.forms.JbpmWorkbenchFormsClient"/>
+  <!--<inherits name="org.jbpm.workbench.ht.JbpmWorkbenchHumanTasksClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.pr.JbpmWorkbenchProcessRuntimeClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.ks.JbpmWorkbenchKieServerAPI"/>-->
+  <!--<inherits name="org.jbpm.workbench.es.JbpmWorkbenchExecutorServiceClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.common.JbpmWorkbenchCommonClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.wi.JbpmWorkbenchIntegrationClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.df.JbpmWorkbenchDataFiltersClient"/>-->
+  <!--<inherits name="org.jbpm.workbench.forms.JbpmWorkbenchFormsClient"/>-->
 
   <!-- Dashbuilder -->
   <inherits name="org.jbpm.dashboard.DashboardAddonApi"/>
-  <inherits name="org.jbpm.dashboard.DashboardAddonClient"/>
+  <!--<inherits name="org.jbpm.dashboard.DashboardAddonClient"/>-->
 
   <!-- Guvnor dependencies -->
   <inherits name="org.guvnor.structure.GuvnorStructureClient"/>
@@ -49,8 +49,8 @@
   <inherits name='org.guvnor.common.services.GuvnorServicesAPI'/>
   <inherits name="org.guvnor.common.services.project.GuvnorProjectAPI"/>
   <inherits name="org.guvnor.common.services.project.GuvnorProjectClient"/>
-  <inherits name="org.guvnor.common.services.workingset.GuvnorWorkingsetAPI"/>
-  <inherits name="org.guvnor.common.services.workingset.GuvnorWorkingsetClient"/>
+  <!--<inherits name="org.guvnor.common.services.workingset.GuvnorWorkingsetAPI"/>-->
+  <!--<inherits name="org.guvnor.common.services.workingset.GuvnorWorkingsetClient"/>-->
   <inherits name="org.guvnor.messageconsole.GuvnorMessageConsoleClient"/>
 
   <!-- Guvnor ALA -->
@@ -79,7 +79,7 @@
   <inherits name="org.kie.workbench.common.screens.library.LibraryClient"/>
 
   <!-- Datasource management -->
-  <inherits name="org.kie.workbench.common.screens.datasource.KieWorkbenchDataSourceClient"/>
+  <!--<inherits name="org.kie.workbench.common.screens.datasource.KieWorkbenchDataSourceClient"/>-->
 
   <!-- Common Services -->
   <inherits name="org.kie.workbench.common.services.datamodeller.DataModellerCore"/>
@@ -92,28 +92,28 @@
 
   <!-- Drools Workbench Screens -->
   <inherits name="org.drools.workbench.screens.drltext.DroolsWorkbenchDRLTextEditorClient"/>
-  <inherits name="org.drools.workbench.screens.enums.DroolsWorkbenchEnumEditorClient"/>
-  <inherits name="org.drools.workbench.screens.factmodel.DroolsWorkbenchFactModelEditorAPI"/>
-  <inherits name="org.drools.workbench.screens.guided.rule.DroolsWorkbenchGuidedRuleEditorClient"/>
-  <inherits name="org.drools.workbench.screens.guided.template.DroolsWorkbenchGuidedTemplateEditorClient"/>
-  <inherits name="org.drools.workbench.screens.guided.dtable.DroolsWorkbenchGuidedDecisionTableEditorClient"/>
-  <inherits name="org.drools.workbench.screens.guided.dtree.DroolsWorkbenchGuidedDecisionTreeEditorClient"/>
-  <inherits name="org.drools.workbench.screens.guided.scorecard.DroolsWorkbenchGuidedScoreCardEditorClient"/>
-  <inherits name="org.drools.workbench.screens.dsltext.DroolsWorkbenchDSLTextEditorClient"/>
-  <inherits name="org.drools.workbench.screens.globals.DroolsWorkbenchGlobalsEditorClient"/>
-  <inherits name="org.drools.workbench.screens.workitems.DroolsWorkbenchWorkItemsEditorClient"/>
-  <inherits name="org.drools.workbench.screens.dtablexls.DroolsWorkbenchDecisionTableXLSEditorClient"/>
-  <inherits name="org.drools.workbench.screens.scorecardxls.DroolsWorkbenchScoreCardXLSEditorClient"/>
-  <inherits name="org.drools.workbench.screens.testscenario.DroolsWorkbenchTestScenarioEditorClient"/>
+  <!--<inherits name="org.drools.workbench.screens.enums.DroolsWorkbenchEnumEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.factmodel.DroolsWorkbenchFactModelEditorAPI"/>-->
+  <!--<inherits name="org.drools.workbench.screens.guided.rule.DroolsWorkbenchGuidedRuleEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.guided.template.DroolsWorkbenchGuidedTemplateEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.guided.dtable.DroolsWorkbenchGuidedDecisionTableEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.guided.dtree.DroolsWorkbenchGuidedDecisionTreeEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.guided.scorecard.DroolsWorkbenchGuidedScoreCardEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.dsltext.DroolsWorkbenchDSLTextEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.globals.DroolsWorkbenchGlobalsEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.workitems.DroolsWorkbenchWorkItemsEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.dtablexls.DroolsWorkbenchDecisionTableXLSEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.scorecardxls.DroolsWorkbenchScoreCardXLSEditorClient"/>-->
+  <!--<inherits name="org.drools.workbench.screens.testscenario.DroolsWorkbenchTestScenarioEditorClient"/>-->
   <inherits name='org.drools.workbench.screens.scenariosimulation.DroolsWorkbenchScenarioSimulationEditorClient'/>
 
   <!-- DMN Editor -->
   <inherits name="org.kie.workbench.common.dmn.project.DMNProjectClient"/>
 
   <!-- Optaplanner Workbench Screens -->
-  <inherits name="org.optaplanner.workbench.screens.domaineditor.OptaPlannerWorkbenchDomainEditorClient"/>
-  <inherits name="org.optaplanner.workbench.screens.guidedrule.OptaPlannerWorkbenchGuidedRuleEditorClient"/>
-  <inherits name="org.optaplanner.workbench.screens.solver.OptaPlannerWorkbenchSolverEditorClient"/>
+  <!--<inherits name="org.optaplanner.workbench.screens.domaineditor.OptaPlannerWorkbenchDomainEditorClient"/>-->
+  <!--<inherits name="org.optaplanner.workbench.screens.guidedrule.OptaPlannerWorkbenchGuidedRuleEditorClient"/>-->
+  <!--<inherits name="org.optaplanner.workbench.screens.solver.OptaPlannerWorkbenchSolverEditorClient"/>-->
 
   <!-- Errai -->
   <inherits name="org.jboss.errai.ui.UI"/>
@@ -124,9 +124,9 @@
 
   <!-- Forms Engine -->
   <inherits name="org.kie.workbench.common.forms.dynamic.DynamicFormsClient"/>
-  <inherits name="org.kie.workbench.common.forms.editor.FormModelerEditorClient"/>
-  <inherits name="org.kie.workbench.common.forms.data.modeller.FormDataModellerIntegrationClient"/>
-  <inherits name="org.kie.workbench.common.forms.jbpm.FormJBPMIntegrationClient"/>
+  <!--<inherits name="org.kie.workbench.common.forms.editor.FormModelerEditorClient"/>-->
+  <!--<inherits name="org.kie.workbench.common.forms.data.modeller.FormDataModellerIntegrationClient"/>-->
+  <!--<inherits name="org.kie.workbench.common.forms.jbpm.FormJBPMIntegrationClient"/>-->
 
   <!-- Specify the application specific style sheet. -->
   <stylesheet src='css/kie-wb.css'/>
@@ -134,12 +134,12 @@
   <inherits name="com.google.gwt.xml.XML"/>
 
   <!-- Form modeler.-->
-  <inherits name="org.kie.workbench.common.forms.dynamic.DynamicFormsClient"/>
+  <!--<inherits name="org.kie.workbench.common.forms.dynamic.DynamicFormsClient"/>-->
 
   <!-- Stunner. -->
   <inherits name="org.kie.workbench.common.stunner.project.StunnerProjectClient"/>
-  <inherits name="org.kie.workbench.common.stunner.bpmn.StunnerBpmnProjectClient"/>
-  <inherits name="org.kie.workbench.common.stunner.cm.StunnerCaseManagementProjectClient"/>
+  <!--<inherits name="org.kie.workbench.common.stunner.bpmn.StunnerBpmnProjectClient"/>-->
+  <!--<inherits name="org.kie.workbench.common.stunner.cm.StunnerCaseManagementProjectClient"/>-->
 
   <!-- Experimental -->
   <inherits name="org.uberfire.experimental.UberfireExperimentalClient"/>

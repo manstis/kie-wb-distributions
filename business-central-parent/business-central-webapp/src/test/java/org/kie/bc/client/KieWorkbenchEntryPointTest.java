@@ -35,12 +35,11 @@ import org.jboss.errai.ioc.client.container.SyncBeanManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kie.bc.client.KieWorkbenchEntryPoint;
+import org.kie.bc.client.admin.MinimalAdminPageHelper;
 import org.kie.bc.client.navigation.NavTreeDefinitions;
 import org.kie.bc.client.resources.i18n.NavigationConstants;
 import org.kie.workbench.common.profile.api.preferences.Profile;
 import org.kie.workbench.common.profile.api.preferences.ProfilePreferences;
-import org.kie.workbench.common.workbench.client.admin.DefaultAdminPageHelper;
 import org.kie.workbench.common.workbench.client.authz.PermissionTreeSetup;
 import org.kie.workbench.common.workbench.client.error.DefaultWorkbenchErrorCallback;
 import org.kie.workbench.common.workbench.client.menu.DefaultWorkbenchFeaturesMenusHelper;
@@ -102,7 +101,7 @@ public class KieWorkbenchEntryPointTest {
     private SyncBeanManager syncBeanManager;
 
     @Mock
-    private DefaultAdminPageHelper adminPageHelper;
+    private MinimalAdminPageHelper adminPageHelper;
 
     private NavTreeDefinitions navTreeDefinitions;
 
@@ -130,10 +129,10 @@ public class KieWorkbenchEntryPointTest {
     private DefaultWorkbenchErrorCallback defaultWorkbenchErrorCallback;
 
     private KieWorkbenchEntryPoint kieWorkbenchEntryPoint;
-    
+
     @Mock
     private ProfilePreferences profilePreferences;
-    
+
     @Mock
     private EventSourceMock<WorkbenchProfileCssClass> workbenchProfileCssClassEvent;
 
@@ -150,15 +149,15 @@ public class KieWorkbenchEntryPointTest {
             ((Command) invocationOnMock.getArguments()[0]).execute();
             return null;
         }).when(userSystemManager).waitForInitialization(any(Command.class));
-        
+
         executeParametrizedCommandWith(0, new ProfilePreferences(Profile.FULL))
-                    .when(profilePreferences).load(any(ParameterizedCommand.class), 
-                                                    any(ParameterizedCommand.class));  
+                .when(profilePreferences).load(any(ParameterizedCommand.class),
+                                               any(ParameterizedCommand.class));
 
         doReturn(mock(MenuFactory.TopLevelMenusBuilder.class)).when(menusHelper).buildMenusFromNavTree(any());
 
         CallerMock<AppConfigService> appConfigServiceCallerMock = new CallerMock<>(appConfigService);
-        
+
         kieWorkbenchEntryPoint = spy(new KieWorkbenchEntryPoint(appConfigServiceCallerMock,
                                                                 activityBeansCache,
                                                                 menusHelper,
@@ -222,76 +221,76 @@ public class KieWorkbenchEntryPointTest {
 
         NavGroup design = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_DESIGN);
         NavItem projects = navTree.getItemById(NavTreeDefinitions.ENTRY_PROJECTS);
-        NavItem pages = navTree.getItemById(NavTreeDefinitions.ENTRY_PAGES);
+//        NavItem pages = navTree.getItemById(NavTreeDefinitions.ENTRY_PAGES);
 
         NavGroup deploy = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_DEPLOY);
         NavItem execServers = navTree.getItemById(NavTreeDefinitions.ENTRY_EXECUTION_SERVERS);
 
-        NavGroup manage = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_MANAGE);
-        NavItem processDef = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_DEFINITIONS);
-        NavItem processInst = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_INSTANCES);
-        NavItem taskAdmin = navTree.getItemById(NavTreeDefinitions.ENTRY_ADMINISTRATION_TASKS);
-        NavItem jobs = navTree.getItemById(NavTreeDefinitions.ENTRY_JOBS);
-        NavItem executionErrors = navTree.getItemById(NavTreeDefinitions.ENTRY_EXECUTION_ERRORS);
-
-        NavGroup track = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_TRACK);
-        NavItem tasks = navTree.getItemById(NavTreeDefinitions.ENTRY_TASKS_LIST);
-        NavItem processDashboard = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_DASHBOARD);
-        NavItem taskDashboard = navTree.getItemById(NavTreeDefinitions.ENTRY_TASK_DASHBOARD);
+//        NavGroup manage = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_MANAGE);
+//        NavItem processDef = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_DEFINITIONS);
+//        NavItem processInst = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_INSTANCES);
+//        NavItem taskAdmin = navTree.getItemById(NavTreeDefinitions.ENTRY_ADMINISTRATION_TASKS);
+//        NavItem jobs = navTree.getItemById(NavTreeDefinitions.ENTRY_JOBS);
+//        NavItem executionErrors = navTree.getItemById(NavTreeDefinitions.ENTRY_EXECUTION_ERRORS);
+//
+//        NavGroup track = (NavGroup) navTree.getItemById(NavTreeDefinitions.GROUP_TRACK);
+//        NavItem tasks = navTree.getItemById(NavTreeDefinitions.ENTRY_TASKS_LIST);
+//        NavItem processDashboard = navTree.getItemById(NavTreeDefinitions.ENTRY_PROCESS_DASHBOARD);
+//        NavItem taskDashboard = navTree.getItemById(NavTreeDefinitions.ENTRY_TASK_DASHBOARD);
 
         assertNotNull(workbench);
         assertNotNull(design);
         assertNotNull(deploy);
-        assertNotNull(manage);
-        assertNotNull(track);
+//        assertNotNull(manage);
+//        assertNotNull(track);
         assertEquals(design.getParent(),
                      workbench);
         assertEquals(deploy.getParent(),
                      workbench);
-        assertEquals(manage.getParent(),
-                     workbench);
-        assertEquals(track.getParent(),
-                     workbench);
+//        assertEquals(manage.getParent(),
+//                     workbench);
+//        assertEquals(track.getParent(),
+//                     workbench);
 
         assertNotNull(projects);
-        assertNotNull(pages);
+//        assertNotNull(pages);
         assertEquals(projects.getParent(),
                      design);
-        assertEquals(pages.getParent(),
-                     design);
+//        assertEquals(pages.getParent(),
+//                     design);
 
         assertNotNull(execServers);
         assertEquals(execServers.getParent(),
                      deploy);
 
-        assertNotNull(processDef);
-        assertNotNull(processInst);
-        assertNotNull(taskAdmin);
-        assertNotNull(jobs);
-        assertNotNull(executionErrors);
-        assertEquals(processDef.getParent(),
-                     manage);
-        assertEquals(processInst.getParent(),
-                     manage);
-        assertEquals(taskAdmin.getParent(),
-                     manage);
-        assertEquals(jobs.getParent(),
-                     manage);
-        assertEquals(executionErrors.getParent(),
-                     manage);
+//        assertNotNull(processDef);
+//        assertNotNull(processInst);
+//        assertNotNull(taskAdmin);
+//        assertNotNull(jobs);
+//        assertNotNull(executionErrors);
+//        assertEquals(processDef.getParent(),
+//                     manage);
+//        assertEquals(processInst.getParent(),
+//                     manage);
+//        assertEquals(taskAdmin.getParent(),
+//                     manage);
+//        assertEquals(jobs.getParent(),
+//                     manage);
+//        assertEquals(executionErrors.getParent(),
+//                     manage);
 
-        assertNotNull(tasks);
-        assertNotNull(processDashboard);
-        assertNotNull(taskDashboard);
-        assertEquals(tasks.getParent(),
-                     track);
-        assertEquals(processDashboard.getParent(),
-                     track);
-        assertEquals(taskDashboard.getParent(),
-                     track);
+//        assertNotNull(tasks);
+//        assertNotNull(processDashboard);
+//        assertNotNull(taskDashboard);
+//        assertEquals(tasks.getParent(),
+//                     track);
+//        assertEquals(processDashboard.getParent(),
+//                     track);
+//        assertEquals(taskDashboard.getParent(),
+//                     track);
 
         assertFalse(design.isModifiable());
-        assertFalse(pages.isModifiable());
+//        assertFalse(pages.isModifiable());
     }
 
     @Test

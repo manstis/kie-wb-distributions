@@ -21,8 +21,6 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.drools.workbench.screens.workitems.backend.server.WorkbenchConfigurationHelper;
-import org.drools.workbench.screens.workitems.service.WorkItemsEditorService;
 import org.guvnor.structure.organizationalunit.OrganizationalUnitService;
 import org.guvnor.structure.repositories.RepositoryService;
 import org.guvnor.structure.server.config.ConfigGroup;
@@ -45,27 +43,23 @@ import org.uberfire.io.IOService;
 @ApplicationScoped
 public class AppSetup extends BaseAppSetup {
 
-    private static final Logger logger = LoggerFactory.getLogger( AppSetup.class );
+    private static final Logger logger = LoggerFactory.getLogger(AppSetup.class);
 
     private Event<ApplicationStarted> applicationStartedEvent;
-
-    private WorkbenchConfigurationHelper workbenchConfigurationHelper;
 
     protected AppSetup() {
     }
 
     @Inject
-    public AppSetup( @Named("ioStrategy") final IOService ioService,
-                     final RepositoryService repositoryService,
-                     final OrganizationalUnitService organizationalUnitService,
-                     final KieModuleService moduleService,
-                     final ConfigurationService configurationService,
-                     final ConfigurationFactory configurationFactory,
-                     final Event<ApplicationStarted> applicationStartedEvent,
-                     final WorkbenchConfigurationHelper workbenchConfigurationHelper ) {
-        super( ioService, repositoryService, organizationalUnitService, moduleService, configurationService, configurationFactory );
+    public AppSetup(@Named("ioStrategy") final IOService ioService,
+                    final RepositoryService repositoryService,
+                    final OrganizationalUnitService organizationalUnitService,
+                    final KieModuleService moduleService,
+                    final ConfigurationService configurationService,
+                    final ConfigurationFactory configurationFactory,
+                    final Event<ApplicationStarted> applicationStartedEvent) {
+        super(ioService, repositoryService, organizationalUnitService, moduleService, configurationService, configurationFactory);
         this.applicationStartedEvent = applicationStartedEvent;
-        this.workbenchConfigurationHelper = workbenchConfigurationHelper;
     }
 
     @PostConstruct
@@ -74,47 +68,42 @@ public class AppSetup extends BaseAppSetup {
             configurationService.startBatch();
 
             // Setup mandatory properties for Drools-Workbench
-            setupConfigurationGroup( ConfigType.GLOBAL,
-                                     GLOBAL_SETTINGS,
-                                     getGlobalConfiguration() );
-
-            // Setup properties required by the Work Items Editor
-            setupConfigurationGroup( ConfigType.EDITOR,
-                                     WorkItemsEditorService.WORK_ITEMS_EDITOR_SETTINGS,
-                                     workbenchConfigurationHelper.getWorkItemElementDefinitions() );
+            setupConfigurationGroup(ConfigType.GLOBAL,
+                                    GLOBAL_SETTINGS,
+                                    getGlobalConfiguration());
 
             // notify components that bootstrap is completed to start post setups
-            applicationStartedEvent.fire( new ApplicationStarted() );
-        } catch ( final Exception e ) {
-            logger.error( "Error during update config", e );
-            throw new RuntimeException( e );
+            applicationStartedEvent.fire(new ApplicationStarted());
+        } catch (final Exception e) {
+            logger.error("Error during update config", e);
+            throw new RuntimeException(e);
         } finally {
             configurationService.endBatch();
         }
     }
 
     protected ConfigGroup getGlobalConfiguration() {
-        final ConfigGroup group = configurationFactory.newConfigGroup( ConfigType.GLOBAL,
-                                                                       GLOBAL_SETTINGS,
-                                                                       "" );
-        group.addConfigItem( configurationFactory.newConfigItem( "drools.dateformat",
-                                                                 "dd-MMM-yyyy" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "drools.datetimeformat",
-                                                                 "dd-MMM-yyyy HH:mm:ss" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "drools.defaultlanguage",
-                                                                 "en" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "drools.defaultcountry",
-                                                                 "US" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "build.enable-incremental",
-                                                                 "true" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "rule-modeller-onlyShowDSLStatements",
-                                                                 "false" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "designer.context",
-                                                                 "designer" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "designer.profile",
-                                                                 "jbpm" ) );
-        group.addConfigItem( configurationFactory.newConfigItem( "support.runtime.deploy",
-                                                                 "true" ) );
+        final ConfigGroup group = configurationFactory.newConfigGroup(ConfigType.GLOBAL,
+                                                                      GLOBAL_SETTINGS,
+                                                                      "");
+        group.addConfigItem(configurationFactory.newConfigItem("drools.dateformat",
+                                                               "dd-MMM-yyyy"));
+        group.addConfigItem(configurationFactory.newConfigItem("drools.datetimeformat",
+                                                               "dd-MMM-yyyy HH:mm:ss"));
+        group.addConfigItem(configurationFactory.newConfigItem("drools.defaultlanguage",
+                                                               "en"));
+        group.addConfigItem(configurationFactory.newConfigItem("drools.defaultcountry",
+                                                               "US"));
+        group.addConfigItem(configurationFactory.newConfigItem("build.enable-incremental",
+                                                               "true"));
+        group.addConfigItem(configurationFactory.newConfigItem("rule-modeller-onlyShowDSLStatements",
+                                                               "false"));
+        group.addConfigItem(configurationFactory.newConfigItem("designer.context",
+                                                               "designer"));
+        group.addConfigItem(configurationFactory.newConfigItem("designer.profile",
+                                                               "jbpm"));
+        group.addConfigItem(configurationFactory.newConfigItem("support.runtime.deploy",
+                                                               "true"));
         return group;
     }
 }
