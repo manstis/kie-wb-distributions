@@ -18,27 +18,18 @@ package org.kie.bc.client.home;
 
 import org.jboss.errai.ui.client.local.spi.TranslationService;
 import org.kie.bc.client.resources.i18n.Constants;
+import org.kie.workbench.common.profile.api.preferences.ProfilePreferences;
 import org.kie.workbench.common.screens.home.client.widgets.shortcut.utils.ShortcutHelper;
 import org.kie.workbench.common.screens.home.model.HomeModel;
 import org.kie.workbench.common.screens.home.model.HomeModelProvider;
 import org.kie.workbench.common.screens.home.model.HomeShortcut;
 import org.kie.workbench.common.screens.home.model.HomeShortcutLink;
 import org.kie.workbench.common.screens.home.model.ModelUtils;
-import org.kie.workbench.common.profile.api.preferences.Profile;
-import org.kie.workbench.common.profile.api.preferences.ProfilePreferences;
 import org.uberfire.client.mvp.PlaceManager;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.EXECUTION_ERRORS;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.JOBS;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.PROCESS_DASHBOARD;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.PROCESS_DEFINITIONS;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.PROCESS_INSTANCES;
+
 import static org.kie.workbench.common.workbench.client.PerspectiveIds.PROVISIONING;
 import static org.kie.workbench.common.workbench.client.PerspectiveIds.SERVER_MANAGEMENT;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.TASKS;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.TASKS_ADMIN;
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.TASK_DASHBOARD;
 import static org.uberfire.workbench.model.ActivityResourceType.PERSPECTIVE;
-
 
 public abstract class AbstractHomeProducer implements HomeModelProvider {
 
@@ -65,67 +56,14 @@ public abstract class AbstractHomeProducer implements HomeModelProvider {
                                               translationService.format(Constants.SubHeading),
                                               "images/community_home_bg.jpg");
 
-        switch(profilePreferences.getProfile()) {
-            case FULL:
-                addProfileFullShortcuts(model);
-                break;
-            case PLANNER_AND_RULES:
-                addProfileRulesPlannerShortcuts(model);
-                break;
-            default:
-                addProfileFullShortcuts(model);
-                break;
-        
-        }
+        addProfileFullShortcuts(model);
+
         return model;
-    }
-    
-    private void addProfileRulesPlannerShortcuts(final HomeModel model) {
-        model.addShortcut(createDesignShortcut());
-        model.addShortcut(createDeployShortcut());
     }
 
     private void addProfileFullShortcuts(final HomeModel model) {
         model.addShortcut(createDesignShortcut());
         model.addShortcut(createDeployShortcut());
-        model.addShortcut(createManageShortcut());
-        model.addShortcut(createTrackShortcut());
-    }
-
-    protected HomeShortcut createTrackShortcut() {
-        final HomeShortcut track = ModelUtils.makeShortcut("pficon pficon-trend-up",
-                                                           translationService.format(Constants.Track),
-                                                           translationService.format(Constants.TrackDescription),
-                                                           () -> placeManager.goTo(PROCESS_DASHBOARD),
-                                                           PROCESS_DASHBOARD,
-                                                           PERSPECTIVE);
-        track.addLink(new HomeShortcutLink(translationService.format(Constants.TaskInbox),
-                                           TASKS));
-        track.addLink(new HomeShortcutLink(translationService.format(Constants.ProcessReports),
-                                           PROCESS_DASHBOARD));
-        track.addLink(new HomeShortcutLink(translationService.format(Constants.TaskReports),
-                                           TASK_DASHBOARD));
-        return track;
-    }
-
-    protected HomeShortcut createManageShortcut() {
-        final HomeShortcut manage = ModelUtils.makeShortcut("fa fa-briefcase",
-                                                            translationService.format(Constants.Manage),
-                                                            translationService.format(Constants.ManageDescription),
-                                                            () -> placeManager.goTo(PROCESS_INSTANCES),
-                                                            PROCESS_INSTANCES,
-                                                            PERSPECTIVE);
-        manage.addLink(new HomeShortcutLink(translationService.format(Constants.ProcessDefinitions),
-                                            PROCESS_DEFINITIONS));
-        manage.addLink(new HomeShortcutLink(translationService.format(Constants.ProcessInstances),
-                                            PROCESS_INSTANCES));
-        manage.addLink(new HomeShortcutLink(translationService.format(Constants.Tasks),
-                                            TASKS_ADMIN));
-        manage.addLink(new HomeShortcutLink(translationService.format(Constants.Jobs),
-                                            JOBS));
-        manage.addLink(new HomeShortcutLink(translationService.format(Constants.ExecutionErrors),
-                                            EXECUTION_ERRORS));
-        return manage;
     }
 
     protected HomeShortcut createDeployShortcut() {
@@ -155,13 +93,9 @@ public abstract class AbstractHomeProducer implements HomeModelProvider {
         }
         return translationService.format(Constants.DeployDescription1);
     }
-    
+
     protected String getDesignDescription() {
-        if (profilePreferences.getProfile() == Profile.PLANNER_AND_RULES) {
-            return translationService.format(Constants.DesignDescription);
-        } else {
-            return translationService.format(Constants.DesignDescriptionFull);        
-        }
+        return translationService.format(Constants.DesignDescription);
     }
 
     protected abstract HomeShortcut createDesignShortcut();

@@ -25,10 +25,8 @@ import org.kie.workbench.common.screens.home.client.widgets.shortcut.utils.Short
 import org.kie.workbench.common.screens.home.model.HomeShortcut;
 import org.kie.workbench.common.screens.home.model.HomeShortcutLink;
 import org.kie.workbench.common.screens.home.model.ModelUtils;
-import org.kie.workbench.common.profile.api.preferences.Profile;
 import org.uberfire.client.mvp.PlaceManager;
 
-import static org.kie.workbench.common.workbench.client.PerspectiveIds.CONTENT_MANAGEMENT;
 import static org.kie.workbench.common.workbench.client.PerspectiveIds.LIBRARY;
 import static org.uberfire.workbench.model.ActivityResourceType.PERSPECTIVE;
 
@@ -59,12 +57,7 @@ public class HomeProducer extends AbstractHomeProducer {
                                                             PERSPECTIVE);
         design.addLink(new HomeShortcutLink(translationService.format(Constants.Projects),
                                             LIBRARY));
-        if (profilePreferences.getProfile() == Profile.FULL) {
-            design.addLink(new HomeShortcutLink(translationService.format(Constants.Pages),
-                                            CONTENT_MANAGEMENT));
-        }
+
         return design;
     }
-
-
 }
